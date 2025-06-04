@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калькулятор викидів шкідливих речовин</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Калькулятор валових викидів твердих частинок</h1>
+        
+        <div class="fuel-section">
+            <h2>Параметри котла</h2>
+            <div class="input-group">
+                <label for="boilerType">Тип котла:</label>
+                <select id="boilerType">
+                    <option value="0.8">Відкрита топка з рідким шлаковидаленням</option>
+                    <option value="0.95">З твердим (сухим) шлаковидаленням</option>
+                    <option value="0.7">Напіввідкрита топка з рідким шлаковидаленням</option>
+                    <option value="0.55">Двокамерна топка</option>
+                    <option value="0.5">З циркулюючим киплячим шаром</option>
+                    <option value="0.2">З бульбашковим киплячим шаром</option>
+                    <option value="0.15">З нерухомим шаром</option>
+                </select>
+            </div>
+            
+            <div class="input-group">
+                <label for="filterEfficiency">Ефективність золоуловлювальної установки (η<sub>зу</sub>):</label>
+                <input type="number" id="filterEfficiency" min="0" max="1" step="0.001" value="0.985">
+            </div>
+        </div>
+        
+        <div class="fuel-section">
+            <h2>Вугілля</h2>
+            <div class="input-group">
+                <label for="coalAmount">Кількість вугілля (т):</label>
+                <input type="number" id="coalAmount" min="0" step="0.01" value="1096363">
+            </div>
+            
+            <div class="input-group">
+                <label for="coalAshContent">Вміст золи (A<sup>r</sup>, %):</label>
+                <input type="number" id="coalAshContent" min="0" max="100" step="0.01" value="25.20">
+            </div>
+            
+            <div class="input-group">
+                <label for="coalCombustibles">Горючі речовини у викиді (Γ<sub>вип</sub>, %):</label>
+                <input type="number" id="coalCombustibles" min="0" max="100" step="0.01" value="1.5">
+            </div>
+            
+            <div class="input-group">
+                <label for="coalHeatValue">Нижча теплота згоряння (Q<sub>i</sub><sup>r</sup>, МДж/кг):</label>
+                <input type="number" id="coalHeatValue" min="0" step="0.01" value="20.47">
+            </div>
+            
+            <div class="result-group">
+                <p>Показник емісії: <span id="coalEmissionFactor">-</span> г/ГДж</p>
+                <p>Валовий викид: <span id="coalTotalEmission">-</span> т</p>
+            </div>
+        </div>
+        
+        <div class="fuel-section">
+            <h2>Мазут</h2>
+            <div class="input-group">
+                <label for="oilAmount">Кількість мазуту (т):</label>
+                <input type="number" id="oilAmount" min="0" step="0.01" value="70945">
+            </div>
+            
+            <div class="input-group">
+                <label for="oilAshContent">Вміст золи (A<sup>r</sup>, %):</label>
+                <input type="number" id="oilAshContent" min="0" max="100" step="0.01" value="0.15">
+            </div>
+            
+            <div class="input-group">
+                <label for="oilCombustibles">Горючі речовини у викиді (Γ<sub>вип</sub>, %):</label>
+                <input type="number" id="oilCombustibles" min="0" max="100" step="0.01" value="0">
+            </div>
+            
+            <div class="input-group">
+                <label for="oilHeatValue">Нижча теплота згоряння (Q<sub>i</sub><sup>r</sup>, МДж/кг):</label>
+                <input type="number" id="oilHeatValue" min="0" step="0.01" value="39.48">
+            </div>
+            
+            <div class="result-group">
+                <p>Показник емісії: <span id="oilEmissionFactor">-</span> г/ГДж</p>
+                <p>Валовий викид: <span id="oilTotalEmission">-</span> т</p>
+            </div>
+        </div>
+        
+        <div class="fuel-section">
+            <h2>Природний газ</h2>
+            <div class="input-group">
+                <label for="gasAmount">Кількість газу (тис. м<sup>3</sup>):</label>
+                <input type="number" id="gasAmount" min="0" step="0.01" value="84762">
+            </div>
+            
+            <div class="input-group">
+                <label for="gasHeatValue">Нижча теплота згоряння (Q<sub>i</sub><sup>r</sup>, МДж/м<sup>3</sup>):</label>
+                <input type="number" id="gasHeatValue" min="0" step="0.01" value="33.08">
+            </div>
+            
+            <div class="result-group">
+                <p>Показник емісії: <span id="gasEmissionFactor">0</span> г/ГДж</p>
+                <p>Валовий викид: <span id="gasTotalEmission">0</span> т</p>
+            </div>
+        </div>
+        
+        <div class="total-section">
+            <h2>Загальний результат</h2>
+            <p>Сумарний валовий викид твердих частинок: <span id="totalEmission">-</span> т</p>
+        </div>
+        
+        <button id="calculateBtn">Розрахувати</button>
+        <button id="resetBtn">Скинути</button>
+    </div>
+
+    <script src="calculator.js"></script>
+</body>
+</html>
